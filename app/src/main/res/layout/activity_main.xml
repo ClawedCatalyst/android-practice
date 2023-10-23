@@ -64,6 +64,7 @@
                android:alpha="0.7"/>
 
            <EditText
+               android:id="@+id/email"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:inputType="textEmailAddress"
@@ -83,6 +84,7 @@
                android:alpha="0.7"/>
 
            <EditText
+               android:id="@+id/password"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:inputType="textPassword"
@@ -94,6 +96,7 @@
                android:layout_height="38dp"/>
 
            <com.google.android.material.button.MaterialButton
+               android:id="@+id/btnLogin"
                android:layout_width="match_parent"
                android:layout_height="60dp"
                android:backgroundTint="@color/colorPrimary"
