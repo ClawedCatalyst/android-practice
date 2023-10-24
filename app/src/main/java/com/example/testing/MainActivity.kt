@@ -9,9 +9,13 @@ import  android.widget.EditText
 import android.widget.Toast
 import  android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import com.example.testing.databinding.ActivityMainBinding
+import com.example.testing.ui.HomeActivity
+import com.example.testing.utils.TokenManager
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etPass: EditText
     lateinit var btnLogin: Button
     lateinit var etForgetPassword: TextView
+
+    @Inject
+    lateinit var tokenManager: TokenManager
 
     private lateinit var binding: ActivityMainBinding
 
@@ -34,6 +41,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        if(tokenManager.getToken() != null){
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
 
 
         btnLogin = binding.btnLogin
@@ -101,6 +112,12 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     Toast.makeText(this, "Successfully LoggedIn", Toast.LENGTH_SHORT).show()
                 }
+            response.body()?.let { Log.d("token", it.access) }
+
+            response.body()?.let { tokenManager.saveToken(it.access) }
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+
             } else{
                 runOnUiThread {
                     Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
