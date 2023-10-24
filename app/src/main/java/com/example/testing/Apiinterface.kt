@@ -7,4 +7,8 @@ import retrofit2.Response
 interface Apiinterface {
     @POST("auth/login/")
     suspend fun login(@Body loginRequest: request): Response<response>
+
+    @POST("auth/otp_reset_password/")
+    suspend fun forgetPasswordOTP(@Body forgetPasswordRequest: forgetPasswordRequest): Response<forgetPasswordResponse>
+
 }

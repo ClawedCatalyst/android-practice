@@ -1,5 +1,6 @@
 package com.example.testing
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.util.Patterns
 import  android.widget.EditText
 import android.widget.Toast
 import  android.widget.Button
+import android.widget.TextView
 import com.example.testing.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.*
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var etEmailContainer: EditText
     private lateinit var etPass: EditText
     lateinit var btnLogin: Button
+    lateinit var etForgetPassword: TextView
 
     private lateinit var binding: ActivityMainBinding
 
@@ -36,13 +39,18 @@ class MainActivity : AppCompatActivity() {
         btnLogin = binding.btnLogin
         etEmail = binding.email
         etPass = binding.password
-
         btnLogin = binding.btnLogin
+        etForgetPassword = binding.ForgetPassword
 
         btnLogin.setOnClickListener{
             GlobalScope.launch {
                 login()
             }
+        }
+
+        etForgetPassword.setOnClickListener {
+            val intent = Intent(this, ForgetPassword::class.java)
+            startActivity(intent)
         }
 
 
@@ -79,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         }
         return  null
     }
+
 
 
     private suspend fun login(){
