@@ -13,10 +13,12 @@ import androidx.navigation.findNavController
 import com.example.testing.databinding.ActivityMainBinding
 import com.example.testing.ui.HomeActivity
 import com.example.testing.utils.TokenManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
