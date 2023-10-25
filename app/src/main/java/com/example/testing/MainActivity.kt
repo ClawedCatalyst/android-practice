@@ -10,6 +10,7 @@ import android.widget.Toast
 import  android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
+import com.example.testing.api.Apiinterface
 import com.example.testing.databinding.ActivityMainBinding
 import com.example.testing.ui.HomeActivity
 import com.example.testing.utils.TokenManager
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etPass: EditText
     lateinit var btnLogin: Button
     lateinit var etForgetPassword: TextView
+
+    @Inject
+    lateinit var apiinterface: Apiinterface
 
     @Inject
     lateinit var tokenManager: TokenManager
@@ -47,7 +51,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
-
 
         btnLogin = binding.btnLogin
         etEmail = binding.email
@@ -107,9 +110,8 @@ class MainActivity : AppCompatActivity() {
         val email = etEmail.text.toString()
         val pass = etPass.text.toString()
         var requestObj = request(email, pass)
-        Log.d("request", requestObj.toString())
-        val response = Retrofitinstance.apiInterface.login(requestObj)
-        Log.d("suhail", response.body().toString())
+        val d = Log.d("request", requestObj.toString())
+        val response = apiinterface.login(requestObj)
         if (response.code() == 201) {
                 runOnUiThread {
                     Toast.makeText(this, "Successfully LoggedIn", Toast.LENGTH_SHORT).show()

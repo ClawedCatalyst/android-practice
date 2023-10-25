@@ -1,5 +1,9 @@
-package com.example.testing
+package com.example.testing.api
 
+import com.example.testing.forgetPasswordRequest
+import com.example.testing.forgetPasswordResponse
+import com.example.testing.request
+import com.example.testing.response
 import retrofit2.http.POST
 import retrofit2.http.Body
 import retrofit2.Response

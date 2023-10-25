@@ -6,4 +6,7 @@
     <string name="emailadrress">Email Address</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat_fragment">Chat Fragment\n</string>
+    <string name="home_fragment">Home Fragment\n</string>
+    <string name="profile_fragment">Profile Fragment\n</string>
 </resources>
