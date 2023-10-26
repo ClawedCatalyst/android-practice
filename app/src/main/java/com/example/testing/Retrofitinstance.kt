@@ -21,7 +21,7 @@ class Retrofitinstance {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder{
+    fun provideRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://awsbackend.suhaila.tech/mailer/")
@@ -29,19 +29,19 @@ class Retrofitinstance {
 
     @Singleton
     @Provides
-    fun provideOkhttpClient(authInterceptor: AuthInterceptor) : OkHttpClient{
+    fun provideOkhttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor(authInterceptor).build()
     }
 
     @Singleton
     @Provides
-    fun provideAPI(retrofitBuilder: Retrofit.Builder): Apiinterface{
+    fun provideAPI(retrofitBuilder: Retrofit.Builder): Apiinterface {
         return retrofitBuilder.build().create(Apiinterface::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideProfileAPI(retrofitBuilder: Builder, okHttpClient: OkHttpClient): ProfileAPI{
+    fun provideProfileAPI(retrofitBuilder: Builder, okHttpClient: OkHttpClient): ProfileAPI {
         return retrofitBuilder
             .client(okHttpClient)
             .build()
